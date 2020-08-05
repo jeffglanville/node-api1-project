@@ -27,7 +27,7 @@ server.get("/users/:id", (req, res) => {
     }
 })
 
-server.post("/users", (req, res) => {
+server.post("//users", (req, res) => {
     const newUser = db.createUser({
         name: req.body.name,
     })
