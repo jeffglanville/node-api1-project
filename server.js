@@ -61,7 +61,7 @@ server.delete("/users/:id", (req,res) => {
     const user = db.getUserById(req.params.id)
 
     if(user) {
-        db.deleteUser(req.params.id)
+        db.deleteUser(user.id)
         res.status(204).end
     }else {
         res.status(404).json({
@@ -86,11 +86,11 @@ server.put("/users/:id", (req,res) => {
             errorMessage: "Please provide a name and bio for the user"
         })
     }else {
-        const newInfoUser = db.updateUser(user.id, {
+        const newInfoUser = db.updateUser(editedUser.id, {
             name: req.body.name,
             bio: req.body.bio
         })
-        res.json(updatedUser)
+        res.json(newInfoUser)
     }
 })
 
